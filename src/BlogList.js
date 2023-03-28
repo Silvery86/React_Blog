@@ -1,4 +1,4 @@
-const BlogList = ({blogs , title}) => {
+const BlogList = ({blogs , title, handleDelete}) => {
     // Thay  vì dùng props và lấy giá trị ra sử dụng 
     // thì có thể lấy trực tiếp giá trị từ props bằng cách trên
     // const blogs = props.blogs;
@@ -11,6 +11,7 @@ const BlogList = ({blogs , title}) => {
                 <div className="blog-preview" key={blog.id}>
                         <h2>{blog.title}</h2>
                         <p>Written by {blog.author}</p>
+                        <button onClick={() => handleDelete(blog.id)}>Delete Blog</button>
                 </div>
             ))}
         </div>
