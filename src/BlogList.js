@@ -1,3 +1,4 @@
+import React from 'react'
 const BlogList = ({blogs , title}) => {
     // Thay  vì dùng props và lấy giá trị ra sử dụng 
     // thì có thể lấy trực tiếp giá trị từ props bằng cách trên
