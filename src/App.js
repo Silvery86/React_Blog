@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './Create';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
+import Game from './Game';
 
 function App() {
   
@@ -25,6 +26,9 @@ function App() {
               </Route>
               <Route path="/blogs/:id">
                 <BlogDetails />
+              </Route>
+              <Route path="/game">
+                <Game />
               </Route>
               <Route path="*">
                 <NotFound />
