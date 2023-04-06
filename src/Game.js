@@ -3,12 +3,12 @@ import SingleCard from './components/SingleCard'
 import './Game.css'
 
 const cardImages = [
-  { "src": "/img/helmet-1.png" },
-  { "src": "/img/potion-1.png" },
-  { "src": "/img/ring-1.png" },
-  { "src": "/img/scroll-1.png" },
-  { "src": "/img/shield-1.png" },
-  { "src": "/img/sword-1.png" },
+  { "src": "/img/helmet-1.png" , matched : false},
+  { "src": "/img/potion-1.png" , matched : false},
+  { "src": "/img/ring-1.png" , matched : false},
+  { "src": "/img/scroll-1.png" , matched : false},
+  { "src": "/img/shield-1.png" , matched : false},
+  { "src": "/img/sword-1.png" , matched : false},
 ]
 const Game = () => {
     const [cards, setCards] = useState([])
@@ -30,17 +30,24 @@ const Game = () => {
     // funtion when click to back card image will set that card to choice one or two
     const handleChoice = (card) => {
         choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
-        console.log(card)
     }
 
     // compare 2 choice card
     useEffect(() => {
         if(choiceOne && choiceTwo){
             if(choiceOne.src === choiceTwo.src){
-                console.log('match')
+                setCards(prevCards =>{
+                    return prevCards.map(card => {
+                        if(card.src === choiceOne.src){
+                            return{...card, matched: true}
+                        }else{
+                            return card
+                        }
+                    })
+                })
                 resetTurn()  
             }else{
-                console.log('not match')
+        
                 resetTurn()
             }
         }
