@@ -15,6 +15,7 @@ const Game = () => {
     const [turns, setTurns] = useState(0)
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
+    const [disabled, setDisable] = useState(false)
 
     // funtion to duplicate the card images and shuffle it 
     // then let them have random id
@@ -34,7 +35,9 @@ const Game = () => {
 
     // compare 2 choice card
     useEffect(() => {
+
         if(choiceOne && choiceTwo){
+            setDisable(true)
             if(choiceOne.src === choiceTwo.src){
                 setCards(prevCards =>{
                     return prevCards.map(card => {
@@ -45,10 +48,10 @@ const Game = () => {
                         }
                     })
                 })
-                resetTurn()  
+                setTimeout(() =>resetTurn(),1000)  
             }else{
         
-                resetTurn()
+                setTimeout(() =>resetTurn(),1000)  
             }
         }
     },[choiceOne, choiceTwo])
@@ -58,6 +61,7 @@ const Game = () => {
         setChoiceOne(null)
         setChoiceTwo(null)
         setTurns(prevTurn => prevTurn + 1)
+        setDisable(false)
     }
 
     return ( 
@@ -70,6 +74,8 @@ const Game = () => {
                 key={card.id} 
                 card={card} 
                 handleChoice={handleChoice}
+                flipped={card === choiceOne || card === choiceTwo || card.matched}
+                disabled={disabled}                    
                 />
             ))}
 
