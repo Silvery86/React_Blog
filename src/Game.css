@@ -3,15 +3,23 @@
 .Game {
     max-width: 1200px;
     margin: 40px auto;
-    background-color: purple;
+    background-color: #1b1523;
     font-family: Raleway, sans-serif;
     margin: 0;
     font-size: 1.5em;
     text-align: center;
-    background: #1b1523;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
   }
- 
+  .Game > *{
+    flex: 1 1 100px
+  }
+  .Game h1{
+    color: #ffffffc8;
+  }
   button {
     background: none;
     border: 2px solid #ffffff;
@@ -27,11 +35,10 @@
     color: #fff;
   }
   .card-grid{
-    
+    max-width: 860px;
     margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
-   
   }
   

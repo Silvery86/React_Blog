@@ -24,6 +24,8 @@ const Game = () => {
         .sort(() => Math.random() - 0.5)
         .map((card) => ({...card, id: Math.random()}))
 
+        setChoiceOne(null)
+        setChoiceTwo(null)
         setCards(shuffleCards)
         setTurns(0)
         
@@ -63,6 +65,10 @@ const Game = () => {
         setTurns(prevTurn => prevTurn + 1)
         setDisable(false)
     }
+    // automatic start game
+    useEffect(() => {
+        shuffleCards()
+    },[])
 
     return ( 
         <div className='Game'>
@@ -79,6 +85,9 @@ const Game = () => {
                 />
             ))}
 
+            </div>
+            <div>
+                <h1>Turn: {turns}</h1>
             </div>
         </div>
      );
